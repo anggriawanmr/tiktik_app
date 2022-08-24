@@ -6,6 +6,7 @@ import GoogleLogin from 'react-google-login';
 import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 import Discover from './Discover';
+import Footer from './Footer';
 
 const SideBar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -61,6 +62,7 @@ const SideBar = () => {
           )}
 
           <Discover />
+          <Footer />
         </div>
       )}
     </div>
