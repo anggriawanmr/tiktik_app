@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const authStore = (set: any) => ({
   userProfile: null,
+  allUsers: [],
 
   addUser: (user: any) => set({ userProfile: user }),
 });

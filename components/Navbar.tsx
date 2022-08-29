@@ -9,9 +9,10 @@ import { IoMdAdd } from 'react-icons/io';
 
 import Logo from '../utils/tiktik-logo.png';
 import { createOrGetUser } from '../utils';
+import useAuthStore from '../store/authStore';
 
 const Navbar = () => {
-  const user = false;
+  const { userProfile, addUser } = useAuthStore();
 
   return (
     <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
@@ -25,15 +26,37 @@ const Navbar = () => {
           />
         </div>
       </Link>
-
+      {console.log(userProfile)}
       <div>SEARCH</div>
 
       <div>
-        {user ? (
-          <div>Logged In</div>
+        {userProfile ? (
+          <div className="flex gap-5 md:gap-10">
+            <Link href="/upload">
+              <button className="border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2">
+                <IoMdAdd className="text-xl" />
+                {` `}
+                <span className="hidden md:block">Upload</span>
+              </button>
+            </Link>
+            {userProfile.image && (
+              <Link href="/">
+                <>
+                  <Image
+                    width={62}
+                    height={62}
+                    className="rounded-full"
+                    src={userProfile.image}
+                    alt="profile photo"
+                    layout="responsive"
+                  />
+                </>
+              </Link>
+            )}
+          </div>
         ) : (
           <GoogleLogin
-            onSuccess={(response) => createOrGetUser(response)}
+            onSuccess={(response) => createOrGetUser(response, addUser)}
             onError={() => console.log('error')}
           />
         )}
