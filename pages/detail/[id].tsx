@@ -17,7 +17,7 @@ interface Iprops {
 
 const Detail = ({ postDetails }: Iprops) => {
   const [post, setPost] = useState(postDetails);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState<boolean>(false);
 
   const onVideoClick = () => {};
 
@@ -60,10 +60,10 @@ export const getServerSideProps = async ({
 }: {
   params: { id: string };
 }) => {
-  const { data } = await axios.get(`http://localhost:3000/api/post/${id}`);
+  const res = await axios.get(`http://localhost:3000/api/post/${id}`);
 
   return {
-    props: { postDetails: data },
+    props: { postDetails: res.data },
   };
 };
 

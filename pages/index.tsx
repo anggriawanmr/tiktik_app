@@ -15,7 +15,7 @@ const Home = ({ videos }: IProps) => {
     <div className="flex flex-col gap-10 videos h-full">
       {videos.length ? (
         videos?.map((video: Video) => (
-          <VideoCard post={video} isShowingOnHome key={video._id} />
+          <VideoCard post={video} key={video._id} />
         ))
       ) : (
         <NoResults text={`No Videos`} />
@@ -34,7 +34,7 @@ export const getServerSideProps = async ({
   let response = await axios.get(`http://localhost:3000/api/post`);
 
   if (topic) {
-    response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
+    response = await axios.get(`http://localhost:3000/api/discover/${topic}`);
   }
 
   return {
