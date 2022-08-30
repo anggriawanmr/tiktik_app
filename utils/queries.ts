@@ -149,7 +149,6 @@ export const userLikedPostsQuery = (userId: string | string[]) => {
       image
     },
  likes,
-
     comments[]{
       comment,
       _key,
