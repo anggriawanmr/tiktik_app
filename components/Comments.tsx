@@ -15,7 +15,7 @@ const Comments = () => {
         {comments.length ? (
           <div>Videos</div>
         ) : (
-          <NoResults text="No comments yet! Be the first one to add a comment." />
+          <NoResults text="No comments yet" />
         )}
       </div>
     </div>
