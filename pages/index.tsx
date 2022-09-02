@@ -31,10 +31,13 @@ export const getServerSideProps = async ({
 }: {
   query: { topic: string };
 }) => {
-  let response = await axios.get(`${BASE_URL}/api/post`);
+  // let response = await axios.get(`${BASE_URL}/api/post`);
+  let response = null;
 
   if (topic) {
     response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
+  } else {
+    response = await axios.get(`${BASE_URL}/api/post`);
   }
 
   return {
